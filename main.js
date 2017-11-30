@@ -4,6 +4,7 @@ var baseurl = 'http://rms.tomtomgroup.com/';
 var skiplist = [];
 var teacherList=[];
 var allClasses = [];
+var theGroupSize;
 var url = window.location.href;
     var captured = /teacher=([^&]+)/.exec(url)[1]; // Value is in [1] ('384' in our case)
     var result = captured ? captured :'my Default Value' ;
