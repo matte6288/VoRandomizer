@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 
 
-function createGroups2(var groupSize) {
+function createGroups2(var theGroupSize) {
 
     // get student list from textarea
     var rClass = $('#allStudents').val().split(',');
