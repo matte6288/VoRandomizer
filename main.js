@@ -136,7 +136,7 @@ $(document).ready(function() {
       })
 
 
-        createGroups();
+        createGroups2(2);
         //  printRules();
         $("#csv_filename").val('degradation_export.csv');
         $("search").val('');
@@ -148,6 +148,79 @@ $(document).ready(function() {
         });
     }
 );
+
+
+
+
+
+
+function createGroups2(var groupSize) {
+
+    // get student list from textarea
+    var rClass = $('#allStudents').val().split(',');
+
+    // create random number array
+    var rNums = [];
+    for (var i = 0; i < rClass.length; i++) {
+        rNums[i] = Math.random();
+    }
+    console.log(rNums);
+
+    // sort the student list with numbers array
+    var temp1, temp2;
+    for (var i = 0; i < rClass.length; i++) {
+        for (var j = 0; j < rClass.length; j++) {
+            if (rNums[i] > rNums[j]) {
+                temp1 = rNums[j];
+                rNums[j] = rNums[i];
+                rNums[i] = temp1;
+                temp2 = rClass[j];
+                rClass[j] = rClass[i];
+                rClass[i] = temp2;
+            }
+        }
+    }
+
+    // figure out the vital stats
+    var theStudentCount = rClass.length;
+    var theGroupCount = Math.floor(theStudentCount / theGroupSize) + 1;
+    var maxGroupSize = theGroupSize + 1;
+    console.log("students: " + theStudentCount);
+    console.log("desired group size: " + theGroupSize);
+    console.log("max group size: " + maxGroupSize);
+    console.log("group count: " + theGroupCount);
+
+    // create empty groups of max size
+    var theGroups = new Array(theGroupCount);
+    for (var i = 0; i < theGroupCount; i++) {
+        theGroups[i] = new Array(maxGroupSize);
+    }
+    console.log(theGroups);
+    // the students can be distributed evenly
+    if (theStudentCount % theGroupSize == 0) {
+        console.log("***easy mode***")
+        for (var j = 0; j < theGroupCount; j++) {
+            for (var k = 0; k < theGroupSize; k++) {
+                theGroups[j][k] = rClass[j * theGroupSize + k];
+            }
+        }
+    }
+    // not sure what's going on
+    else if (theStudentCount % theGroupSize > theStudentCount / theGroupSize) {
+        alert("OH NO - Select a smaller group size - RIP");
+    }
+    // uneven distribution
+    else {
+      console.log("***spillover mode***")
+      for (var i = 0; i < theStudentCount; i++) {
+              theGroups[i % theGroupCount][Math.floor(i / theGroupCount)] = rClass[i];
+
+
+
+
+
+
+
 
 
 
