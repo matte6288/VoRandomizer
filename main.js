@@ -72,7 +72,7 @@ teacherList=(findTeacher(allClasses, captured));
 }
 
 
-var theGroupSize = 1;
+var GroupSize = 1;
 var workingClass=[];
 $(document).ready(function() {
          $("#titleText").text(captured+ " Randomizer");
@@ -120,16 +120,16 @@ $(document).ready(function() {
         // grab group size
         switch (this.value) {
             case "2":
-              theGroupSize = 2;
+              GroupSize = 2;
               break;
             case "3":
-              theGroupSize = 3;
+              GroupSize = 3;
               break;
             case "4":
-              theGroupSize = 4;
+              GroupSize = 4;
               break;
             case "5":
-              theGroupSize = 5;
+              GroupSize = 5;
               break;
         }
 
